@@ -1,0 +1,21 @@
+.a-propos {
+  max-width: 720px;
+}
+
+.a-propos-content {
+  margin-top: 0.5rem;
+}
+
+.a-propos-text {
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.a-propos-text p {
+  margin-bottom: 1rem;
+}
+
+.a-propos-text p:last-child {
+  margin-bottom: 0;
+}

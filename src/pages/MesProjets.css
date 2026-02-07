@@ -1,0 +1,92 @@
+.mes-projets {
+  max-width: 800px;
+}
+
+.page-intro {
+  color: var(--color-muted);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.projets-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.projet-card {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.projet-card article {
+  display: flex;
+  flex-direction: column;
+}
+
+.projet-screenshot-link {
+  display: block;
+  line-height: 0;
+  transition: opacity var(--transition);
+}
+
+.projet-screenshot-link:hover {
+  opacity: 0.9;
+}
+
+.projet-screenshot {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
+.projet-body {
+  padding: 1.5rem;
+}
+
+.projet-titre {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.projet-phrase {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.projet-details {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.projet-details dt {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.projet-details dd {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.projet-github-link {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.projet-github-link:hover {
+  text-decoration: underline;
+}
