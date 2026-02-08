@@ -54,7 +54,7 @@ export default function Accueil() {
             <div className="accueil-hero-photo-wrap">
               {!photoError ? (
                 <img
-                  src="/photo.jpg"
+                  src="././public/PP.webP"
                   alt="Maïssane Abdallah - Développeur Full Stack"
                   className="accueil-hero-photo"
                   width="220"
