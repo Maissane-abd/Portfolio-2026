@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import './MesServices.css'
+import './MesCompetences.css'
 
 const motivations = [
   {
@@ -73,21 +73,7 @@ export default function MesServices() {
         <link rel="canonical" href={typeof window !== 'undefined' ? window.location.origin + '/mes-services' : '/mes-services'} />
       </Helmet>
       <div className="mes-services container">
-        <h1 className="page-title">Mes services</h1>
-
-        <section className="services-section" aria-labelledby="motivations-title">
-          <h2 id="motivations-title" className="section-title">
-            Mes motivations et valeurs
-          </h2>
-          <ul className="motivations-list">
-            {motivations.map(({ title, description }) => (
-              <li key={title} className="motivation-card">
-                <h3 className="motivation-title">{title}</h3>
-                <p className="motivation-desc">{description}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <h1 className="page-title">Mes compétences</h1>
 
         <section className="services-section" aria-labelledby="outils-title">
           <h2 id="outils-title" className="section-title">
@@ -110,6 +96,20 @@ export default function MesServices() {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="services-section" aria-labelledby="motivations-title">
+          <h2 id="motivations-title" className="section-title">
+            Mes motivations et valeurs
+          </h2>
+          <ul className="motivations-list">
+            {motivations.map(({ title, description }) => (
+              <li key={title} className="motivation-card">
+                <h3 className="motivation-title">{title}</h3>
+                <p className="motivation-desc">{description}</p>
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
     </>

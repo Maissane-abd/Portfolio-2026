@@ -9,16 +9,16 @@ const LIEN_LINKEDIN = 'https://linkedin.com/in'
 
 const sections = [
   {
-    id: 'services',
-    title: 'Mes services',
-    excerpt: 'Mes motivations et valeurs : recherche d\'excellence, modernisation des projets, apprentissage continu, digitalisation et esprit d\'entreprendre. Découvrez aussi les outils que je maîtrise (frontend, backend, DevOps, gestion de projet).',
-    to: '/mes-services',
-    label: 'Voir mes services',
+    id: 'compétences',
+    title: 'Mes compétences',
+    excerpt: 'Mes motivations et valeurs : recherche d\'excellence, modernisation des projets, apprentissage continu et digitalisation. Découvrez aussi les outils que je maîtrise (frontend, backend, DevOps, gestion de projet).',
+    to: '/mes-compétences',
+    label: 'Voir mes compétences',
   },
   {
     id: 'projets',
     title: 'Mes projets',
-    excerpt: 'Une sélection de mes réalisations avec captures d\'écran, stack technique, contexte et résultats. Chaque projet est lié à son dépôt GitHub.',
+    excerpt: 'Une sélection de mes réalisations avec captures d\'écran, stack technique, contexte et résultats. Chaque projet est lié à son dépôt GitHub ou son site web.',
     to: '/mes-projets',
     label: 'Voir mes projets',
   },
@@ -40,6 +40,7 @@ const sections = [
 
 export default function Accueil() {
   const [photoError, setPhotoError] = useState(false)
+  const photoPath = '/public/PP.webp'
 
   return (
     <>
@@ -54,7 +55,7 @@ export default function Accueil() {
             <div className="accueil-hero-photo-wrap">
               {!photoError ? (
                 <img
-                  src="././public/PP.webP"
+                  src={photoPath}
                   alt="Maïssane Abdallah - Développeur Full Stack"
                   className="accueil-hero-photo"
                   width="220"
@@ -72,14 +73,14 @@ export default function Accueil() {
                 Bonjour, je suis Maïssane ABDALLAH
               </h1>
               <p className="accueil-hero-subtitle">
-                Étudiant développeur Full Stack, en recherche de master informatique. Freelance Shopify et JavaScript. Passionné par l'excellence, le sport et la cyber sécurité.
+                Étudiant développeur Full Stack, en recherche de master informatique. Freelance Shopify et JavaScript. Passionné par le e-commerce, le sport et la cyber sécurité.
               </p>
               <div className="accueil-hero-buttons">
                 <Link to="/me-contacter" className="accueil-hero-btn accueil-hero-btn-primary">
                   Me contacter
                 </Link>
                 <a
-                  href={LIEN_GITHUB}
+                  href="https://github.com/Maissane-abd"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="accueil-hero-btn accueil-hero-btn-outline"
@@ -87,7 +88,7 @@ export default function Accueil() {
                   GitHub
                 </a>
                 <a
-                  href={LIEN_LINKEDIN}
+                  href="https://www.linkedin.com/in/maïssane-abdallah"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="accueil-hero-btn accueil-hero-btn-outline"

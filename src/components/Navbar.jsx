@@ -4,9 +4,8 @@ import './Navbar.css'
 
 const links = [
   { to: '/', label: 'Accueil' },
-  // { to: '/mes-services', label: 'services' },
-  { to: '/mes-projets', label: 'projets' },
   { to: '/mes-competences', label: 'compétences' },
+  { to: '/mes-projets', label: 'projets' },
   { to: '/a-propos', label: 'À propos' },
   { to: '/me-contacter', label: 'Contact' },
 ]

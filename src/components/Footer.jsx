@@ -35,7 +35,7 @@ export default function Footer() {
           </p>
           <nav className="footer-nav" aria-label="Navigation pied de page">
             <Link to="/">Accueil</Link>
-            <Link to="/mes-services">Mes services</Link>
+            <Link to="/mes-competences">Mes compétences</Link>
             <Link to="/mes-projets">Mes projets</Link>
             <Link to="/a-propos">À propos</Link>
             <Link to="/me-contacter">Me contacter</Link>
