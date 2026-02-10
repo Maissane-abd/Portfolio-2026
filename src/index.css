@@ -98,5 +98,5 @@ textarea {
 
 .main-content {
   flex: 1;
-  padding: 0rem 0 3rem;
+  padding: 64px 0 3rem; /* réserve l’espace pour la navbar fixe (min-height 64px) */
 }

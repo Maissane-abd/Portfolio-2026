@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import './Navbar.css'
 
@@ -10,12 +10,32 @@ const links = [
   { to: '/me-contacter', label: 'Contact' },
 ]
 
+const SCROLL_THRESHOLD = 80
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
+  const lastScrollY = useRef(0)
   const location = useLocation()
 
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY
+      if (y <= SCROLL_THRESHOLD) {
+        setHidden(false)
+      } else if (y > lastScrollY.current) {
+        setHidden(true)
+      } else {
+        setHidden(false)
+      }
+      lastScrollY.current = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <header className="navbar" role="banner">
+    <header className={`navbar ${hidden ? 'navbar-hidden' : ''}`} role="banner">
       <div className="container navbar-inner">
         <Link to="/" className="navbar-brand" aria-label="Accueil - Portfolio">
           Portfolio

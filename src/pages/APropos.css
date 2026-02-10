@@ -1,8 +1,76 @@
+/* Layout avec sidebar */
+.a-propos-layout {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.a-propos-sidebar {
+  flex-shrink: 0;
+  width: 220px;
+  position: sticky;
+  top: 1.5rem;
+}
+
+.a-propos-nav-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  margin: 0 0 0.75rem 0;
+}
+
+.a-propos-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.a-propos-nav-list li {
+  margin-bottom: 0.35rem;
+}
+
+.a-propos-nav-link {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-left: 2px solid transparent;
+  padding-left: 0.5rem;
+  margin-left: -0.5rem;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.a-propos-nav-link:hover {
+  color: var(--color-primary, inherit);
+}
+
+.a-propos-nav-link:focus-visible {
+  outline: 2px solid var(--color-primary, currentColor);
+  outline-offset: 2px;
+}
+
+/* Cible active (optionnel : peut être enrichi en JS avec IntersectionObserver) */
+.a-propos-nav-link[aria-current="true"],
+.a-propos-nav-link.active {
+  color: var(--color-primary, inherit);
+  border-left-color: var(--color-primary, currentColor);
+}
+
 .a-propos {
+  flex: 1;
+  min-width: 0;
   max-width: 720px;
 }
 
+/* Décalage pour que le titre de section soit visible sous la navbar (min-height 64px) */
 .a-propos-content {
+  scroll-margin-top: 5.5rem;
   margin-top: 0.5rem;
 }
 
@@ -18,4 +86,51 @@
 
 .a-propos-text p:last-child {
   margin-bottom: 0;
+}
+
+.a-propos-link {
+  color: var(--color-primary, currentColor);
+  text-decoration: underline;
+}
+
+.a-propos-link:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .a-propos-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .a-propos-sidebar {
+    position: static;
+    width: 100%;
+    border-bottom: 1px solid var(--color-border, rgba(0, 0, 0, 0.1));
+    padding-bottom: 1rem;
+  }
+
+  .a-propos-nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+  }
+
+  .a-propos-nav-list li {
+    margin-bottom: 0;
+  }
+
+  .a-propos-nav-link {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 0.15rem;
+  }
+
+  .a-propos-nav-link[aria-current="true"],
+  .a-propos-nav-link.active {
+    border-left: none;
+    border-bottom-color: var(--color-primary, currentColor);
+  }
 }
