@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import emailjs from '@emailjs/browser'
 import './MeContacter.css'
 
 const EMAIL = 'abd.maissane@gmail.com'
+const EMAILJS_PUBLIC_KEY = '5laE737ZUlSjKVqNb'
+const EMAILJS_SERVICE_ID = 'service_rhf6z3e'
+const EMAILJS_TEMPLATE_ID = 'template_pn6gzb9'
 
 const INITIAL_FORM = {
   nom: '',
@@ -14,43 +17,48 @@ const INITIAL_FORM = {
 
 export default function MeContacter() {
   const [form, setForm] = useState(INITIAL_FORM)
-  const [status, setStatus] = useState(null) // null | 'sending' | 'success' | 'error'
-  const [errorMessage, setErrorMessage] = useState('')
+  const [status, setStatus] = useState(null) // null | 'sending' | 'success'
+
+  useEffect(() => {
+    emailjs.init(EMAILJS_PUBLIC_KEY)
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
-    setStatus(null) // efface le message précédent quand l'utilisateur modifie le formulaire
+    setStatus(null)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setStatus('sending')
-    setErrorMessage('')
 
-    emailjs.send(
-      'service_rhf6z3e',
-      'template_pobv6ps',
-      {
-        name: form.nom,
-        email: form.email,
-        time: new Date().toLocaleString('fr-FR'),
-        message: `
-Email : ${form.email}
-Téléphone : ${form.num}
+    const templateParams = {
+      title: 'Message depuis le portfolio',
+      name: form.nom,
+      email: form.email,
+      time: new Date().toLocaleString('fr-FR'),
+      message: [
+        `Email : ${form.email}`,
+        form.num ? `Téléphone : ${form.num}` : null,
+        '',
+        form.demande,
+      ]
+        .filter(Boolean)
+        .join('\n'),
+    }
 
-${form.demande}
-        `.trim(),
-      },
-      '5laE737ZUlSjKVqNb'
-    )
+    emailjs
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams, {
+        publicKey: EMAILJS_PUBLIC_KEY,
+      })
       .then(() => {
         setStatus('success')
         setForm(INITIAL_FORM)
       })
-      .catch(() => {
-        setStatus('error')
-        setErrorMessage('L\'envoi a échoué. Vous pouvez m\'écrire directement par email ci-dessous.')
+      .catch((err) => {
+        setStatus(null)
+        console.error('EmailJS error:', err)
       })
   }
 
@@ -126,11 +134,6 @@ ${form.demande}
               {status === 'success' && (
                 <p className="contact-status contact-status-success" role="status">
                   Message envoyé avec succès. Je vous recontacterai rapidement.
-                </p>
-              )}
-              {status === 'error' && (
-                <p className="contact-status contact-status-error" role="alert">
-                  {errorMessage}
                 </p>
               )}
               <button
