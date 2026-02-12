@@ -1,30 +1,57 @@
 import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import emailjs from '@emailjs/browser'
 import './MeContacter.css'
 
 const EMAIL = 'abd.maissane@gmail.com'
 
+const INITIAL_FORM = {
+  nom: '',
+  email: '',
+  num: '',
+  demande: '',
+}
+
 export default function MeContacter() {
-  const [form, setForm] = useState({
-    nom: '',
-    email: '',
-    num: '',
-    demande: '',
-  })
+  const [form, setForm] = useState(INITIAL_FORM)
+  const [status, setStatus] = useState(null) // null | 'sending' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setForm((prev) => ({ ...prev, [name]: value }))
+    setStatus(null) // efface le message précédent quand l'utilisateur modifie le formulaire
   }
 
-  // Envoi par mailto : ouvre le client mail avec les champs pré-remplis
   const handleSubmit = (e) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`Contact portfolio - ${form.nom}`)
-    const body = encodeURIComponent(
-      `Nom : ${form.nom}\nEmail : ${form.email}\nTéléphone : ${form.num}\n\nDemande :\n${form.demande}`
+    setStatus('sending')
+    setErrorMessage('')
+
+    emailjs.send(
+      'service_rhf6z3e',
+      'template_pobv6ps',
+      {
+        name: form.nom,
+        email: form.email,
+        time: new Date().toLocaleString('fr-FR'),
+        message: `
+Email : ${form.email}
+Téléphone : ${form.num}
+
+${form.demande}
+        `.trim(),
+      },
+      '5laE737ZUlSjKVqNb'
     )
-    window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`
+      .then(() => {
+        setStatus('success')
+        setForm(INITIAL_FORM)
+      })
+      .catch(() => {
+        setStatus('error')
+        setErrorMessage('L\'envoi a échoué. Vous pouvez m\'écrire directement par email ci-dessous.')
+      })
   }
 
   return (
@@ -96,8 +123,22 @@ export default function MeContacter() {
                   placeholder="Décrivez votre projet, question ou opportunité..."
                 />
               </label>
-              <button type="submit" className="contact-submit">
-                Envoyer le message
+              {status === 'success' && (
+                <p className="contact-status contact-status-success" role="status">
+                  Message envoyé avec succès. Je vous recontacterai rapidement.
+                </p>
+              )}
+              {status === 'error' && (
+                <p className="contact-status contact-status-error" role="alert">
+                  {errorMessage}
+                </p>
+              )}
+              <button
+                type="submit"
+                className="contact-submit"
+                disabled={status === 'sending'}
+              >
+                {status === 'sending' ? 'Envoi en cours…' : 'Envoyer le message'}
               </button>
             </form>
           </section>
