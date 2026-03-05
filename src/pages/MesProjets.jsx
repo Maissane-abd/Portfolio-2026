@@ -11,7 +11,7 @@ const projets = [
     activite: 'Réalisation de maquettes, modification de thème, optimisation SEO, accessibilité & CRO. Gestion du mail marketing, création de newsletters. Création de contenu pour le blog afin de booster le référencement naturel.',
     resultat: 'Site performant, accessible et bien référencé.',
     SiteUrl: 'https://alexandrofratelli.com',
-    imageUrl: '/src/assets/Alexandro_Fratelli.png',
+    imageUrl: '/public/images/Alexandro_Fratelli.png',
     imageAlt: 'Page d\'accueil de la boutique en ligne Alexandro Fratelli',
   },
   {
@@ -24,7 +24,7 @@ const projets = [
     resultat: 'Site rapide, accessible et bien référencé.',
     githubUrl: 'https://github.com/Maissane-abd/PeurDeDormir.git',
     SiteUrl: 'https://peurdedormir.com',
-    imageUrl: '/src/assets/PeurDeDormir.png',
+    imageUrl: '/public/images/PeurDeDormir.png',
     imageAlt: 'Page d\'accueil de la boutique en ligne Peur De Dormir',
   },
   {
@@ -36,7 +36,7 @@ const projets = [
     activite: 'Maquettes, Github Kanban, SCRUM, Agile, intégration, SEO et accessibilité.',
     resultat: 'Application fonctionnelle avec docker, non déployée.',
     githubUrl: 'https://github.com/Y4CNN/Budgie-1.git',
-    imageUrl: '/src/assets/Budgie.png',
+    imageUrl: '/public/images/Budgie.png',
     imageAlt: 'Page d\'accueil de l\'application Budgie',
   },
   {
@@ -48,7 +48,7 @@ const projets = [
     activite: 'développement front-end, intégration, SEO et accessibilité.',
     resultat: 'Front-end responsive et performant.',
     githubUrl: 'https://github.com/Maissane-abd/SASS-PROJET.git',
-    imageUrl: '/src/assets/Crunchyroll.png',
+    imageUrl: '/public/images/Crunchyroll.png',
     imageAlt: 'Page d\'accueil du site vitrine Crunchyroll',
   },
   {
@@ -60,7 +60,7 @@ const projets = [
     activite: 'développement front-end, intégration, SEO et accessibilité.',
     resultat: 'Front-end responsive et performant.',
     githubUrl: 'https://github.com/Maissane-abd/Spotify.git',
-    imageUrl: '/src/assets/Spotify.png',
+    imageUrl: '/public/images/Spotify.png',
     imageAlt: 'Page d\'accueil de la page d\'accueil de Spotify',
   },
 
