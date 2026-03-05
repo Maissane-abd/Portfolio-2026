@@ -40,7 +40,7 @@ const sections = [
 
 export default function Accueil() {
   const [photoError, setPhotoError] = useState(false)
-  const photoPath = '/public/images/PP.webp'
+  const photoPath = '/images/PP.webp'
 
   return (
     <>
